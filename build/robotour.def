@@ -12,6 +12,8 @@ From: ros:noetic-perception-focal
     mkdir -p ${SINGULARITY_ROOTFS}/robolab/deploy
     [ -f "/root/.netrc" ] && cp "/root/.netrc" "${SINGULARITY_ROOTFS}/root/.netrc" || true
 
+%files
+    sudo /usr/bin/sudo
 
 %runscript
     /opt/ros/robolab/env.sh "$@"
@@ -31,8 +33,6 @@ From: ros:noetic-perception-focal
     cd "${tmp}"
     git clone https://github.com/aleskucera/robotour-singularity.git
     cd robotour-singularity
-
-    ls
 
     DEBIAN_FRONTEND=noninteractive xargs -a config/packages.apt apt-get install -y
     

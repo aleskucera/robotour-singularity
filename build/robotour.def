@@ -8,8 +8,6 @@ From: ros:noetic-perception-focal
     See https://gitlab.fel.cvut.cz/robolab for more information.
 
 %setup
-    echo $SINGULARITY_ROOTFS
-    mkdir -p ${SINGULARITY_ROOTFS}/robolab/deploy
     [ -f "/root/.netrc" ] && cp "/root/.netrc" "${SINGULARITY_ROOTFS}/root/.netrc" || true
 
 %files
@@ -35,7 +33,9 @@ From: ros:noetic-perception-focal
     cd robotour-singularity
 
     DEBIAN_FRONTEND=noninteractive xargs -a config/packages.apt apt-get install -y
-    
+
+    ls -l scripts
+
     scripts/install_editors
 
     ws_parent=/opt/ros \
